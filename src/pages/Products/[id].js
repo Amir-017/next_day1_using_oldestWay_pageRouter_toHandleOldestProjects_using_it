@@ -3,7 +3,6 @@ import ProductDetails from "@/Components/ProductDetails";
 const InfoProduct = ({ product }) => {
   return (
     <div>
-      <h1 className="text-green-500">Product Details</h1>
       <ProductDetails product={product} />
     </div>
   );
@@ -11,7 +10,16 @@ const InfoProduct = ({ product }) => {
 
 export default InfoProduct;
 
-export async function getServerSideProps(context) {
+export async function getStaticPaths() {
+    return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+
+
+
+export async function getStaticProps(context) {
 
   const { id } = context.params;
 

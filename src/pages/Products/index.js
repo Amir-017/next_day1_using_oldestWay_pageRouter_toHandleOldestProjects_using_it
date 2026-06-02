@@ -16,7 +16,7 @@ export default function Products({ products }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
   const response = await fetch(
     "https://dummyjson.com/products"
@@ -28,5 +28,6 @@ export async function getServerSideProps() {
     props: {
       products: data.products,
     },
+    revalidate: 60,
   };
 }
